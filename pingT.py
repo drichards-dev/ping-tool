@@ -13,7 +13,7 @@ import datetime
 date = datetime.datetime.now().strftime("%Y-%m-%d-%f")
 
 # Change IP to desired value. 
-IP = "8.8.8.8"
+IP = input("Enter an IP address or URL: ")
 fIP = open(IP+date+".csv", "w")
 
 while True:
