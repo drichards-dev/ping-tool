@@ -1,2 +1,2 @@
 # ping-tool
-Simple tool to ping and save results to a csv file
+This is a simple python command prompt application to ping an IP address or URL and save the results to a csv file.
