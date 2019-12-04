@@ -2,12 +2,19 @@ import subprocess
 import re
 import time
 import datetime
+import signal
+import sys
 
 #
 # This is a simple program to capture ICMP latency over time.
 # By default it will ping the designated server 1 time every 15 seconds
 # It will run until terminated with CTRL-C
 #
+
+# function to catch ctl-c
+def signal_handler(signal, frame):
+	print("Ctl-C was pressed, the program has ended.")
+	sys.exit(0)
 
 # Capture date to create filename
 date = datetime.datetime.now().strftime("%Y-%m-%d-%f")
@@ -32,6 +39,8 @@ while True:
 	# write data to file
 	fIP.write(IP+","+reout+","+ct+"\n")
 	print(IP+","+reout+","+ct)
+	# check for ctl-c
+	signal.signal(signal.SIGINT, signal_handler)
 	# wait 15 seconds
 	time.sleep(15)
 
