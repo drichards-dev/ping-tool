@@ -21,6 +21,10 @@ date = datetime.datetime.now().strftime("%Y-%m-%d-%f")
 
 # Change IP to desired value. 
 IP = input("Enter an IP address or URL: ")
+PI = input("Enter the ping frequency: ")
+while int(PI) not in range(1,300):
+	PI = input("Please enter a value between 1 and 300: ")
+
 fIP = open(IP+date+".csv", "w")
 
 while True:
@@ -41,7 +45,7 @@ while True:
 	print(IP+","+reout+","+ct)
 	# check for ctl-c
 	signal.signal(signal.SIGINT, signal_handler)
-	# wait 15 seconds
-	time.sleep(15)
+	# wait the appropriate number of seconds
+	time.sleep(int(PI))
 
 fIP.close()
