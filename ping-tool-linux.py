@@ -29,11 +29,11 @@ fIP = open(IP+date+".csv", "w")
 
 while True:
 	# ping from windows os
-	ping = subprocess.Popen(["ping", IP, "-n", "1"], stdout = subprocess.PIPE,stderr = subprocess.PIPE)
+	ping = subprocess.Popen(["ping", IP, "-c", "1"], stdout = subprocess.PIPE,stderr = subprocess.PIPE)
 	# capture the results
 	output = ping.communicate()
 	# define search pattern 
-	pattern = r"Average = (\d+\S+)"
+	pattern = r"rtt = (\d+\S+)"
 	# capture time for time stamp
 	ct = time.ctime()
 	try: # added this bit to capture Index Error when packet is lost
