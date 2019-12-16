@@ -28,24 +28,24 @@ while int(PI) not in range(1,300):
 fIP = open(IP+date+".csv", "w")
 
 while True:
-	# ping from windows os
-	ping = subprocess.Popen(["ping", IP, "-c", "1"], stdout = subprocess.PIPE,stderr = subprocess.PIPE)
-	# capture the results
-	output = ping.communicate()
-	# define search pattern 
-	pattern = r"rtt = (\d+\S+)"
-	# capture time for time stamp
-	ct = time.ctime()
-	try: # added this bit to capture Index Error when packet is lost
-		reout = re.findall(pattern, output[0].decode())[0]
-	except IndexError:
-		fIP.write(IP+","+"No Response"+","+ct+"\n")
-	# write data to file
-	fIP.write(IP+","+reout+","+ct+"\n")
-	print(IP+","+reout+","+ct)
-	# check for ctl-c
-	signal.signal(signal.SIGINT, signal_handler)
-	# wait the appropriate number of seconds
-	time.sleep(int(PI))
+        # ping from linux os
+        ping = subprocess.Popen(["ping", IP, "-c", "1"], stdout = subprocess.PI$
+        # capture the results
+        output = ping.communicate()
+        # define search pattern
+        pattern = r"time=(.)"
+        # capture time for time stamp
+        ct = time.ctime()
+        try: # added this bit to capture Index Error when packet is lost
+                reout = re.findall(pattern, output[0].decode())[0]
+        except IndexError:
+                fIP.write(IP+","+"No Response"+","+ct+"\n")
+        # write data to file
+        fIP.write(IP+","+reout+","+ct+"\n")
+        print(IP+","+reout+","+ct)
+        # check for ctl-c
+        signal.signal(signal.SIGINT, signal_handler)
+        # wait the appropriate number of seconds
+        time.sleep(int(PI))
 
 fIP.close()
