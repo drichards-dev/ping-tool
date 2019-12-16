@@ -29,7 +29,7 @@ fIP = open(IP+date+".csv", "w")
 
 while True:
         # ping from linux os
-        ping = subprocess.Popen(["ping", IP, "-c", "1"], stdout = subprocess.PI$
+        ping = subprocess.Popen(["ping", IP, "-c", "1"], stdout = subprocess.PIPE,stderr = subprocess.PIPE)
         # capture the results
         output = ping.communicate()
         # define search pattern
