@@ -39,7 +39,8 @@ while True:
         try: # added this bit to capture Index Error when packet is lost
                 reout = re.findall(pattern, output[0].decode())[0]
         except IndexError:
-                fIP.write(IP+","+"No Response"+","+ct+"\n")
+		reout = "No Response"
+                fIP.write(IP+","+reout+","+ct+"\n")
         # write data to file
         fIP.write(IP+","+reout+","+ct+"\n")
         print(IP+","+reout+","+ct)
